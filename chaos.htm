@@ -1,17 +1,33 @@
 <html>
 <head>
-<title>Web Objects</title>
-<script type="text/javascript" src="json2.js" />
-<script type="text/javascript" src="jquery-1.5.min.js" />
-<script type="text/javascript" src="NetThings.Core.js" />
-<script type="text/javascript" src="cookies.js" />
-<link rel="Stylesheet" type="text/css" href="style.css" />
+<title>Chaos, the space where things first appeared</title>
+<script type="text/javascript" src="json2.js"></script>
+<script type="text/javascript" src="jquery-1.5.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.8.9.custom.min.js"></script>
+<script type="text/javascript" src="NetThings.Core.js"></script>
+<script type="text/javascript" src="cookies.js" ></script>
+<link rel="Stylesheet" type="text/css" href="style.css" ></link>
+
 <script type="text/javascript">
+$(function() {
 	var appCore = Mike.NetThings.Core;
+	
+	$('#reset').click(function() {
+		appCore.clearSavedState();
+		appCore.loadState();
+		appCore.render();
+	});
+	
+	appCore.loadState();
 	appCore.render();
+});
+
 </script>
 </head>
 <body>
+<div id="controlPanel"> 
+<input id="reset" type="submit" value="reset"/>
+</div>
 <div id="objects">&nbsp;</div>
 </body>
 </html>

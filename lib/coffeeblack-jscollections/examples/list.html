@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: list.html 1606 2003-10-24 21:06:35Z scott $ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>List</title>
+
+<style type="text/css">
+
+body
+{	background-color: #ffffff;
+}
+
+#listcontrols, #listcontents
+{	position: absolute;
+	left: 200px;
+	width: 400px;
+	font-family: monospace;
+	font-size: 12px;
+}
+
+#listcontrols
+{	top: 50px;
+	height: 100px;
+}
+
+#listcontents
+{	top: 150px;
+	background-color: #cccccc;
+	layer-background-color: #cccccc;
+}
+
+</style>
+
+<script language="JavaScript1.2" src="../div.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="../list.js" type="text/javascript"></script>
+<script language="JavaScript1.2" type="text/javascript">
+<!-- <![CDATA[
+
+var l, lcDiv;
+
+function init()
+{	l = new List();
+	lcDiv = document.getElementById("listcontents");
+	
+	for(i in lcDiv)
+		l.add(i);
+	
+	updateList();
+}
+
+function updateList()
+{	var str = "";
+
+	for(var i = 0; i < l.size(); i++)
+	{	if(i > 0) str += "<br />";
+		str += i;
+		str += ".&nbsp;<a href=\"javascript:l.remove(" + i + ");updateList();\">remove</a>&nbsp;";
+		str += l.get(i);
+	}
+	
+	lcDiv.innerHTML = str;
+}
+
+function checkEmpty()
+{	var e = l.isEmpty();
+
+	var str = "This list is ";
+	if(!e)
+		str += "not";
+	
+	str += " empty. It contains ";
+	str += l.size();
+	str += " elements.";
+
+	alert(str);
+}
+
+function clearList()
+{	l.clear();
+	updateList();
+}
+
+// ]]> -->
+</script>
+	
+</head>
+
+<body onload="init();">
+
+<div id="listcontrols">
+	<a href="javascript:l.add(prompt('add element', ''), parseInt(prompt('at which index?', 0)));updateList();">Add an Element</a><br />
+	<a href="javascript:checkEmpty();">Empty?</a><br />
+	<a href="javascript:clearList();">Clear</a><br />
+	<a href="javascript:l.sort();updateList();">Sort</a>
+</div>
+
+<div id="listcontents"></div>
+
+</body>
+</html>

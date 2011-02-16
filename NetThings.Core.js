@@ -10,15 +10,20 @@ var applyMovable = function(target) {
 
 var applyPortal = function(target, params) {
 	var destination = params.destination;
-	target.data('portal', function(objectId) { handlePortal(destination, objectId);}); 
+	target.data('portal', function(object) { handlePortal(destination, object);});
+	portals.push(target);
 };
 
-var handlePortal = function(destintation, objectId){
-	var object = placeObjects[objectId];
-	delete placeObjects['objectId'];
-	objectState[destination][objectId] = object;
+var handlePortal = function(destination, object){
+	var objectId = object.attr('id');
+	var objectSpec = placeObjects[objectId];
+	delete placeObjects[objectId];
+	objectState[destination][objectId] = objectSpec;
+	object.hide();
 	saveState();
 };
+
+
 
 
 var behaviorHandlers = {
@@ -39,6 +44,7 @@ var initialState = {
 
 var objectState;
 var placeObjects;
+var portals = [];
 
 var dragStop = function(e, ui) {
 	// when someone finishes dragging an object, let's update its object state
@@ -48,8 +54,26 @@ var dragStop = function(e, ui) {
 	placeObjects[objectId].top = ui.position.top;
 	placeObjects[objectId].left = ui.position.left;
 	
+	handlePortals(ui.helper, ui.position);
+	
 	saveState();	
-};
+}
+
+var handlePortals = function(object, position) {
+	for(i=0;i<portals.length;i++)
+	{
+		var portal = portals[i];
+		var portalPosition = portal.offset();
+		
+		var portalBottom = portalPosition.top + portal.height();
+		var portalRight = portalPosition.left + portal.width();
+		if (position.top > portalPosition.top && position.left > portalPosition.left 
+			&& position.top < portalBottom && position.left < portalRight)
+			{
+				portal.data('portal')(object);
+			}
+	}
+}
 
 var clearSavedState = function() {
 	createCookie('thingsState', '', -1);

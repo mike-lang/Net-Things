@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: map.html 1605 2003-10-24 04:19:43Z scott $ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Map</title>
+
+<style type="text/css">
+
+body
+{	background-color: #ffffff;
+}
+
+#mapcontrols, #mapcontents
+{	position: absolute;
+	left: 200px;
+	width: 400px;
+	font-family: monospace;
+	font-size: 12px;
+}
+
+#mapcontrols
+{	top: 50px;
+	height: 100px;
+}
+
+#mapcontents
+{	top: 150px;
+	background-color: #cccccc;
+	layer-background-color: #cccccc;
+}
+
+</style>
+
+<script language="JavaScript1.2" src="../div.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="../map.js" type="text/javascript"></script>
+<script language="JavaScript1.2" type="text/javascript">
+<!-- <![CDATA[
+
+var map, lcDiv;
+
+function init()
+{	map = new Map();
+	lcDiv = document.getElementById("mapcontents");
+	
+	for(i in lcDiv)
+		map.put(i, eval("lcDiv." + i));
+	
+	updateMap();
+}
+
+function updateMap()
+{	var str = "";
+	var keys = map.keys();
+	var key;
+	for(var i = 0; i < keys.length; i++)
+	{	key = keys[i];
+	
+		if(i > 0) str += "<br />";
+		str += i;
+		str += ".&nbsp;<a href=\"javascript:map.remove('" + key + "');updateMap();\">remove</a>&nbsp;";
+		str += key;
+		str += "=";
+		
+		var ts = map.get(key);
+		if(typeof ts == "string" && (ts.indexOf("<") != -1 || ts.indexOf(">") != -1))
+			ts = "(HTML text)";
+		
+		str += ts;
+	}
+	
+	lcDiv.innerHTML = str;
+}
+
+function addMapping()
+{	var key = prompt("Key", ""),
+		val = prompt("Value", "");
+		
+	if(key && key != null && val)	
+	{	map.put(key, val);
+		updateMap();
+	}
+	else alert("Key or value not specified.");	
+}
+
+function checkContainsKey()
+{	var k = prompt("Key", "");
+	var c = map.containsKey(k);
+	var msg = "This map ";
+	msg += c ? "contains" : "does not contain";
+	msg += " the key \"";
+	msg += k;
+	msg += "\"";
+
+	alert(msg);
+}
+
+function checkEmpty()
+{	var e = map.isEmpty();
+
+	var str = "This map is ";
+	if(!e)
+		str += "not ";
+	
+	str += "empty. It contains ";
+	str += map.size();
+	str += " elements.";
+
+	alert(str);
+}
+
+function clearMap()
+{	map.clear();
+	updateMap();
+}
+
+function stats()
+{
+	var str = "There are ";
+
+	str += map.buckets.length;
+	str += " buckets in this map, with ";
+	str += map.size();
+	str += " elements total.\n\n";
+
+	for(var i = 0; i < map.buckets.length; i++)
+	{	str += "\tbucket ";
+		str += i;
+		str += ": ";
+		str += map.buckets[i].depth;
+		str += " element";
+
+		if(map.buckets[i].depth != 1)
+			str += "s";
+
+		str += "\n";
+	}
+
+	alert(str);
+}
+
+// ]]> -->
+</script>
+	
+</head>
+
+<body onload="init();">
+
+<div id="mapcontrols">
+	<a href="javascript:addMapping();">Add a Mapping</a><br />
+	<a href="javascript:checkContainsKey();">Contains key?</a><br />
+	<a href="javascript:checkEmpty();">Empty?</a><br />
+	<a href="javascript:clearMap();">Clear</a><br />
+	<br />
+	<a href="javascript:stats();">Map Statistics</a><br />
+</div>
+<div id="mapcontents"></div>
+
+</body>
+</html>

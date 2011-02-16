@@ -1,0 +1,65 @@
+<P align="center"><STRONG><FONT size="5">JavaScript Collections Framework 1.0</FONT></STRONG></P>
+<P align="left"><FONT face="Courier">An example is worth a thousand words. Here is how 
+		you would use the framework.</FONT></P>
+<P align="left"><FONT face="Courier">Using ArrayList.</FONT></P>
+<OL>
+	<LI>
+		<DIV align="left"><FONT face="Courier">Include ArrayList.js file.</FONT></DIV>
+	</LI>
+	<LI>
+		<DIV align="left"><FONT face="Courier">To create an arraylist say</FONT></DIV>
+	</LI>
+</OL>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var 
+		list = new ArrayList(20);</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		list.add("1");</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		list.add("foo");</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		list.add(new Object());</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		list.add(new AnyObject());</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+		iterate through the items</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(itr 
+		= list.iterator(); itr.hasNext();){</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		document.write(itr.next());</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list.remove("foo");</FONT></P>
+<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blah...blah...blah...</FONT></P>
+<P align="left"><FONT face="Courier"></FONT>&nbsp;</P>
+<P align="left"><FONT face="Courier">Using HashMap&nbsp;&nbsp;</FONT></P>
+<FONT face="Courier">
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var 
+			map= new&nbsp;HashMap</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			map.put("1", "2");</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			map.put("foo", "bar");</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			map.put(new Object(), new AnotherObject());</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			map.put(new AnyObject(), new AnyOtherObject());</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// 
+			iterate through the items</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(itr 
+			= map.keySet().iterator(); itr.hasNext();){</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			document.write(map.get(itr.next()));</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.remove("foo");</FONT></P>
+	<P align="left"><FONT face="Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;blah...blah...blah...</FONT>
+	&nbsp;&nbsp;&nbsp;
+	<P align="left">
+	And similarly HashSet, LinkedHashSet, LinkedHashMap can be used. I hope this 
+	examples help. If not
+	<P align="left">mail me at <A href="mailto:khanrocks@gmail.com">khanrocks@gmail.com</A>
+	to know more.
+	<P align="left">
+	Rock ON....
+	<P align="left">
+	&nbsp;
+	<P align="left">
+	No Pixels were harmed during the use of this collection :)</FONT></P>

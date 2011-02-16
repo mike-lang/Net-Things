@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: set.html 1605 2003-10-24 04:19:43Z scott $ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Set</title>
+
+<style type="text/css">
+
+body
+{	background-color: #ffffff;
+}
+
+#setcontrols, #setcontents
+{	position: absolute;
+	left: 200px;
+	width: 400px;
+	font-family: monospace;
+	font-size: 12px;
+}
+
+#setcontrols
+{	top: 50px;
+	height: 100px;
+}
+
+#setcontents
+{	top: 150px;
+	background-color: #cccccc;
+	layer-background-color: #cccccc;
+}
+
+</style>
+
+<script language="JavaScript1.2" src="../div.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="../map.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="../set.js" type="text/javascript"></script>
+<script language="JavaScript1.2" type="text/javascript">
+<!-- <![CDATA[
+
+var s, scDiv;
+
+function init()
+{	s = new Set();
+	scDiv = document.getElementById("setcontents");
+	
+	for(i in scDiv)
+		s.add(i);
+	
+	updateSet();
+}
+
+function updateSet()
+{	var str = "", vals = s.values();
+
+	for(var i = 0; i < vals.length; i++)
+	{	if(i > 0) str += "<br />";
+		str += i;
+		str += ". ";
+		str += vals[i];
+	}
+	
+	scDiv.innerHTML = str;
+}
+
+function addElement()
+{
+	var a = s.add(prompt('add element', ''));updateSet();
+
+	var str = a ? "No" : "An";
+	str += " element was overwritten by this one.";
+
+	alert(str);
+}
+
+function checkEmpty()
+{	var e = s.isEmpty();
+
+	var str = "This set is ";
+	if(!e)
+		str += "not";
+	
+	str += " empty. It contains ";
+	str += s.size();
+	str += " elements.";
+
+	alert(str);
+}
+
+function clearSet()
+{	s.clear();
+	updateSet();
+}
+
+// ]]> -->
+</script>
+	
+</head>
+
+<body onload="init();">
+
+<div id="setcontrols">
+	<a href="javascript:addElement();">Add an Element</a><br />
+	<a href="javascript:checkEmpty();">Empty?</a><br />
+	<a href="javascript:clearSet();">Clear</a><br />
+</div>
+
+<div id="setcontents"></div>
+
+</body>
+</html>
